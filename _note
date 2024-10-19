@@ -1,0 +1,35 @@
+http://localhost:8200/wp/wp-login.php
+
+
+WordPress 6.6.1
+
+■wpログイン情報
+
+ユーザー名:
+test
+
+パスワード:
+YGEJ3hfDAd
+
+
+
+
+css
+/assets/ →　../../assets/
+
+
+
+
+
+DBサーバー名	o5044-666.kagoya.net
+DBユーザー名	side1
+パスワード	tXtmrwX2
+MySQLバージョン	5.7.44
+データベース名	hamawaki_wptest
+
+
+
+
+PHPバージョン	PHP 7.4.33
+
+

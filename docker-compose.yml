@@ -1,0 +1,39 @@
+version: "3.5"
+
+services:
+  db:
+    image: mysql:5.7
+    volumes:
+      - ./db/mysql:/var/lib/mysql
+    restart: always
+    environment:
+      MYSQL_USER: wordpress
+      MYSQL_DATABASE: wordpress
+      MYSQL_PASSWORD: wordpress
+      MYSQL_ROOT_PASSWORD: wordpress
+
+  wordpress:
+    image: wordpress:6.6.1
+    volumes:
+      - ./html:/var/www/html/
+      - ./php/php.ini:/usr/local/etc/php/conf.d/php.ini
+      - ./docker-entrypoint.sh:/usr/local/bin/docker-entrypoint.sh
+    ports:
+      - 8200:80
+    depends_on:
+      - db
+    environment:
+      WORDPRESS_DB_HOST: db:3306
+      WORDPRESS_DB_NAME: wordpress
+      WORDPRESS_DB_USER: wordpress
+      WORDPRESS_DB_PASSWORD: wordpress
+      WORDPRESS_TABLE_PREFIX: "wp_"
+    working_dir: "/var/www/html/wp"
+
+  phpmyadmin:
+    image: phpmyadmin/phpmyadmin:latest
+    restart: always
+    depends_on:
+      - db
+    ports:
+      - 8201:80
